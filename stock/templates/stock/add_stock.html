@@ -1,0 +1,27 @@
+{%extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="">
+
+
+    <div class="" style="padding-left: 10rem; padding-right: 10rem;">
+
+        <div class="" role="alert">
+            <h2 class="text-center display-4 mt-4"> <strong> Add Stock Item</strong></h2>
+            <hr>
+        </div>
+
+        <h3>{{message}}</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+
+            <button type="submit" class="btn btn-info ">Submit</button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

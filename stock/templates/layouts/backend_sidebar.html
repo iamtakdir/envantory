@@ -1,0 +1,53 @@
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <div class="sb-sidenav-menu-heading">Core</div>
+                <a class="nav-link" href="{% url 'list_items' %}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Dashboard
+                </a>
+                <div class="sb-sidenav-menu-heading">Add Stock Section</div>
+                <a class="nav-link collapsed btn btn-dark mb-2" href="{% url 'add_stock' %}"> Add Stock Item
+                </a>
+
+                <a class="nav-link collapsed btn btn-dark mb-2" href="{% url 'add_category' %}"> Add Category
+                </a>
+                <a class="nav-link collapsed btn btn-dark mb-2" href="{% url 'add_sup' %}"> Add Supplier
+                </a>
+
+                <div class="sb-sidenav-menu-heading">List Section</div>
+                <a class="nav-link collapsed btn btn-dark mb-2" href="{% url 'total_list' %}"> Total Stock List
+                </a>
+
+
+            </div>
+        </div>
+
+        <div class="sb-sidenav-footer">
+            <div class="p">Logged in as : {{request.user}}</div>
+
+
+        </div>
+
+        <div class="sb-sidenav-menu-heading text-center">
+            {% if user.is_authenticated %}
+
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit" style="padding-left: 85px; padding-right: 85px;">Logout
+                </button>
+            </form>
+
+            {% else %}
+
+            <button class="btn btn-info" type="submit" style="padding-left: 85px; padding-right: 85px;">login
+            </button>
+
+
+            {% endif %}
+        </div>
+
+
+    </nav>
+</div>

@@ -1,0 +1,50 @@
+{%extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="text-center mb-4 mt-4">
+    <h2 class="display-4 mt-4"> Stock Information </h2>
+</div>
+<div class="row">
+
+    <div class="col-sm-5 ml-4 ">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"> Item Name : <strong>{{item.item_name}} </strong></h5>
+                <ul class="card-text">
+                    <li>Quantity : <strong>{{item.quantity}}</strong></li>
+
+                    <li>Price : <strong>{{item.price}}</strong></li>
+                    <li>Amount : <strong>{{item.amount}}</strong></li>
+
+                    <li>Timestamp : <strong>{{item.timestamp}}</strong></li>
+                    <li>Last-Updated : <strong>{{item.last_updated}}</strong></li>
+
+                </ul>
+                <a href="{% url 'update_stock' item.id %}" class="btn btn-info ml-2">Update Stock</a>
+                <a href="{% url 'delete_stock' item.id %}" class="btn btn-danger ml-3">Delete Stock</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"> Supplier : <strong>{{item.supplier.sup_name}} </strong></h5>
+                <ul class="card-text">
+                    <li>Mobile : <strong>{{item.supplier.sup_mobile}}</strong></li>
+
+                    <li>Email : <strong>{{item.supplier.sup_email}}</strong></li>
+                    <li>Note : <strong>{{item.supplier.sup_note}}</strong></li>
+
+
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

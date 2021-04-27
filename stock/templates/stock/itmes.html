@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title  %} Home {% endblock title%}
+{% block content %}
+{% load crispy_forms_tags %}
+<main>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+
+        <script>
+            alert("{{ message }}");
+        </script>
+
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+    <div class="container-fluid">
+        <h1 class="mt-4 mb-3">Dashboard</h1>
+        <hr>
+        <div class="row">
+            <div class="col-xl-4 col-md-6  text-center">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">
+                        <h3>Total Stock Items</h3>
+                    </div>
+                    <div class=" text-center">
+                        <h1 class="display-3"><span class="badge badge-light">{{total_items}}</span></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6 text-center">
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body">
+                        <h3>Total Suppliers</h3>
+                    </div>
+                    <div class=" text-center">
+                        <h1 class="display-3"><span class="badge badge-light">{{total_supplier}}</span></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6 text-center">
+                <div class="card bg-success text-white mb-4">
+                    <div class="card-body">
+                        <h3>Total Stock Quantity</h3>
+                    </div>
+                    <div class=" text-center">
+                        <h1 class="display-3"><span class="badge badge-light">{{total_quantity}}</span></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                Stock Details
+            </div>
+
+            <div class="form-group card mb-4">
+                <form class="form-group" action="" method="GET">
+
+                    {% csrf_token %}
+                    <br>
+                    <div class="text-center">
+                        {{search.form}}
+                        <input class="btn btn-info pl-4 pr-4" type="submit" value="Search" name="" id="">
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+
+                    <table class="table table-striped table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Item Name</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Supplier</th>
+                                <th scope="col">Last-Updated</th>
+
+                                <th scope="col">Update</th>
+                                <th scope="col">Delete</th>
+
+
+
+                            </tr>
+                        </thead>
+                        {% for item in items %}
+                        <tbody>
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td><a href="{% url 'stock_details' item.id %}">{{item.item_name}}</a></td>
+                                <td>{{item.quantity}}</td>
+                                <td>{{item.price}}</td>
+                                <td>{{item.amount}}</td>
+                                <td>{{item.supplier}}</td>
+                                <td>{{item.last_updated}}</td>
+
+                                <td c><a href="{% url 'update_stock' item.id %}"><button type="button"
+                                            class="btn btn-info btn-sm">Update</button></a></td>
+                                <td><a href="{% url 'delete_stock' item.id %}"><button type="button"
+                                            class="btn btn-danger btn-sm">Delete</button></a></td>
+                            </tr>
+                        </tbody>
+                        {% endfor%}
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

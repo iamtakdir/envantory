@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block title  %} Home {% endblock title%}
+{% block content %}
+{% load crispy_forms_tags %}
+<main>
+
+
+
+    <div class="container-fluid">
+        <h1 class="mt-4 mb-3">Total Stock List</h1>
+        <hr>
+        <div class="row mt-4">
+            <div class="col-xl-4 col-md-6  text-center mt-4">
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body">
+                        <h3>Total Stock Items</h3>
+                    </div>
+                    <div class=" text-center">
+
+                        <table class="table table-sm table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item Name</th>
+                                    <th scope="col">Quantity</th>
+                                </tr>
+                            </thead>
+                            {% for item in items %}
+                            <tbody>
+                                <tr>
+
+                                    <td>{{item.item_name}}</td>
+                                    <td>{{item.quantity}}</td>
+                                </tr>
+
+                                </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6  text-center mt-4">
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body">
+                        <h3>Total Suppliers </h3>
+                    </div>
+                    <div class=" text-center">
+
+                        <table class="table table-sm table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Supplier Name</th>
+                                    <th scope="col">Mobile</th>
+                                </tr>
+                            </thead>
+                            {% for sup in suppliers %}
+                            <tbody>
+                                <tr>
+
+                                    <td>{{sup.sup_name}}</td>
+                                    <td>{{sup.sup_mobile}}</td>
+                                </tr>
+
+                                </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6  text-center mt-4">
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body">
+                        <h3>Total Categories </h3>
+                    </div>
+                    <div class=" text-center">
+
+                        <table class="table table-sm table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Categories</th>
+
+                                </tr>
+                            </thead>
+                            {% for cat in categories %}
+                            <tbody>
+                                <tr>
+
+                                    <td>{{cat.cat_name}}</td>
+
+                                </tr>
+
+                                </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+
+            </div>
+        </div>
+
+
+
+    </div>
+    </div>
+    </div>
+</main>
+
+{% endblock %}

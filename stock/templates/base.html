@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {% include "layouts/backend_css.html" %}
+
+</head>
+
+<body class="sb-nav-fixed">
+    {% include "layouts/backend_nav.html" %}
+    <div id="layoutSidenav">
+        {% include "layouts/backend_sidebar.html" %}
+        <div id="layoutSidenav_content">
+            {% block content %}
+
+            {% endblock content %}
+            {% include "layouts/backend_footer.html" %}
+        </div>
+    </div>
+    {% include "layouts/backend_js.html" %}
+</body>
+
+</html>
